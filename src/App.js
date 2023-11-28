@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import LoginForm from './components/LoginForm';
+import ProductList from './components/ProductList';
+import NavBar from './components/NavBar';
 
-function App() {
+const App = () => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const handleLogin = (token) => {
+    localStorage.setItem('token', token);
+    setLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setLoggedIn(false);
+  };
+
+  // Check if user is already logged in
+  React.useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setLoggedIn(true);
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NavBar/>
+      <h1>Simple E-commerce Website</h1>
+      {loggedIn ? (
+        <div>
+          <p>Welcome! You are logged in.</p>
+          <button onClick={handleLogout}>Logout</button>
+          <ProductList/>
+        </div>
+      ) : (
+        <LoginForm onLogin={handleLogin} />
+      )}
     </div>
   );
-}
+};
 
 export default App;

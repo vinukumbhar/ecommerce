@@ -1,0 +1,40 @@
+/* LoginForm.css */
+.form-container {
+    margin: 50px auto;
+    padding: 20px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .form-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  .form-container form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-container input {
+    margin-bottom: 15px;
+    padding: 8px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+  
+  .form-container button {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .form-container button:hover {
+    background-color: #555;
+  }
+  
